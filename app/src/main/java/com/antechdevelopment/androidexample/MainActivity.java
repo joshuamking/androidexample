@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
 			@Override
 			public void onTextChanged (CharSequence s, int start, int before, int count) {
-				//										 TODO: 10/22/16 : Add action
 				Snackbar.make(theSeekBar, s, Snackbar.LENGTH_SHORT).setAction("action", new View.OnClickListener() {
 					@Override
 					public void onClick (View v) {
