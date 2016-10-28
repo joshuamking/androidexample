@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		theSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		SeekBar.OnSeekBarChangeListener listener = new SeekBar.OnSeekBarChangeListener() {
 			@Override
 			public void onProgressChanged (SeekBar seekBar, int progress, boolean fromUser) {
 				theButton.setElevation(progress);
@@ -65,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
 			@Override
 			public void onStopTrackingTouch (SeekBar seekBar) { }
-		});
+		};
+
+		theSeekBar.setOnSeekBarChangeListener(listener);
 
 		theEditText.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -91,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
 		super.onResume();
 
 		Toast.makeText(getApplicationContext(), "onResume!", Toast.LENGTH_LONG).show();
+	}
+
+	@Override
+	protected void onStop () {
+		super.onStop();
 	}
 
 	@Override
