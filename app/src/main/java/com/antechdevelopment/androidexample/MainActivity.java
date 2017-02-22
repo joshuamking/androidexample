@@ -1,5 +1,6 @@
 package com.antechdevelopment.androidexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 				Log.w(TAG, "The Button was clicked");
 				Log.e(TAG, "The Button was clicked");
 				Snackbar.make(v, "The Snackbar - The Button was clicked", Snackbar.LENGTH_SHORT).show();
+
+				startActivity(new Intent(MainActivity.this, ScrollingActivity.class));
 			}
 		});
 
