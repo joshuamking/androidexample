@@ -1,0 +1,14 @@
+<resources>
+	<declare-styleable name="SoloView">
+		<attr format="string"
+			  name="exampleString" />
+		<attr format="boolean"
+			  name="exampleBool" />
+		<attr format="dimension"
+			  name="exampleDimension" />
+		<attr format="color"
+			  name="exampleColor" />
+		<attr format="color|reference"
+			  name="exampleDrawable" />
+	</declare-styleable>
+</resources>
