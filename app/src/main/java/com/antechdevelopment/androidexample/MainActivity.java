@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,38 +50,34 @@ public class MainActivity extends AppCompatActivity {
 
 		getLengthOfString(null);
 
-		theButton.setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick (View v) {
-				Log.v(TAG, "The Button was clicked");
-				Log.d(TAG, "The Button was clicked");
-				Log.i(TAG, "The Button was clicked");
-				Log.w(TAG, "The Button was clicked");
-				Log.e(TAG, "The Button was clicked");
-				Snackbar.make(v, "The Snackbar - The Button was clicked", Snackbar.LENGTH_SHORT).show();
+		theButton.setOnClickListener(v -> {
+			Log.v(TAG, "The Button was clicked");
+			Log.d(TAG, "The Button was clicked");
+			Log.i(TAG, "The Button was clicked");
+			Log.w(TAG, "The Button was clicked");
+			Log.e(TAG, "The Button was clicked");
+			Snackbar.make(v, "The Snackbar - The Button was clicked", Snackbar.LENGTH_SHORT).show();
 
-				startActivity(new Intent(MainActivity.this, ScrollingActivity.class));
-			}
+			startActivity(new Intent(MainActivity.this, ScrollingActivity.class));
 		});
 
-		theSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override public void onCheckedChanged (CompoundButton buttonView, boolean isChecked) {
-				String stateString;
+		theSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+			String stateString;
 
-				if (isChecked) {
-					stateString = "On";
-				}
-				else {
-					stateString = "Off";
-				}
-
-				String newText = "The Switch is " + stateString;
-
-				theLabel.setText(newText);
-
-				SharedPreferences.Editor edit = prefs.edit();
-				edit.putBoolean(THE_SWITCH_KEY, isChecked);
-				edit.apply();
+			if (isChecked) {
+				stateString = "On";
 			}
+			else {
+				stateString = "Off";
+			}
+
+			String newText = "The Switch is " + stateString;
+
+			theLabel.setText(newText);
+
+			SharedPreferences.Editor edit = prefs.edit();
+			edit.putBoolean(THE_SWITCH_KEY, isChecked);
+			edit.apply();
 		});
 
 		SeekBar.OnSeekBarChangeListener listener = new SeekBar.OnSeekBarChangeListener() {
@@ -102,11 +97,8 @@ public class MainActivity extends AppCompatActivity {
 			@Override public void beforeTextChanged (CharSequence s, int start, int count, int after) { }
 
 			@Override public void onTextChanged (CharSequence s, int start, int before, int count) {
-				Snackbar.make(theSeekBar, s, Snackbar.LENGTH_SHORT).setAction("action", new View.OnClickListener() {
-					@Override public void onClick (View v) {
-						Toast.makeText(getApplicationContext(), "Snackbar!!!", Toast.LENGTH_LONG).show();
-					}
-				}).show();
+				Snackbar.make(theSeekBar, s, Snackbar.LENGTH_SHORT).setAction("action",
+																			  v -> Toast.makeText(getApplicationContext(), "Snackbar!!!", Toast.LENGTH_LONG).show()).show();
 			}
 
 			@Override public void afterTextChanged (Editable s) { }
